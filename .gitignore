@@ -1,0 +1,4 @@
+*.Rhistory
+/trash/
+/.ipynb_checkpoints/
+/embedded_data.rdata
