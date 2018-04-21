@@ -25,23 +25,16 @@ newLYMexpr=LYMexpr4use[,c(1,2,order(names(LYMexpr4use)[3:242])+2)]
 rm(expr,response,idvec,LYMexpr,indicator,LYMexpr4use,j)
 
 # basic analysis -----------------
-library("ggpubr")
 max(newLYMexpr[,3:ncol(newLYMexpr)],na.rm = TRUE)
 summary(newLYMexpr[,3:ncol(newLYMexpr)])
 summary(as.array(unlist(newLYMexpr[,3:ncol(newLYMexpr)])))
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 #  -8.20   -0.39    0.00    0.01    0.40    8.37  182919 
-allvalues = as.array(unlist(newLYMexpr[,3:ncol(newLYMexpr)]))
-ggdensity(allvalues, 
-          main = "Density plot of all values",
-          xlab = "Gene expression")
-ggqqplot(allvalues)
-shapiro.test(sample(allvalues,4999))
-gghistogram(allvalues)
-ggdensity(as.array(unlist(newLYMexpr[,9])),na.rm=T)
+plot(density(as.array(unlist(newLYMexpr[,3:ncol(newLYMexpr)])),na.rm=T))
+plot(density(as.array(unlist(newLYMexpr[,6])),na.rm=T))
 
 # Imputation Experiments ---------------------
-## remove microarray features with too many missing values
+## remove microarrays with too many missing values
 X = t(newLYMexpr[,3:ncol(newLYMexpr)]) # the n*p data matrix
 dim(X) # 240 7399
 colnames(X) = unname(unlist(newLYMexpr['NAME']))

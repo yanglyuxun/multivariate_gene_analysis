@@ -85,9 +85,9 @@ plot_mat=function(m){
   }
   df$method=factor(df$method)
   ggplot(df)+geom_line(aes(x=Index,y=Value,col=method,group=method))+
-    geom_text(aes(label=method, col=method, x=Index,y=Value),alpha=0.4)+
-    xlab('Quelity Index')+ylab('Quality Value')+theme_bw()#+
-  #theme(axis.text.x = element_text(angle=20,hjust=1))
+    geom_text(aes(label=method, col=method, x=Index,y=Value),alpha=0.7)+
+    xlab('Quelity Index')+ylab('Quality Value')+theme_bw()+
+  theme(axis.text.x = element_text(angle=20,hjust=1))
 }
 plot_mat(quality_results)
 
@@ -96,8 +96,9 @@ GMresult = factor(as.matrix(read.csv('GaussianMixtureResult.csv')))
 embedded_data[['FA']] = embedded_data[['PCA']] #initialize and read FA results
 embedded_data[['FA']]@data@data = as.matrix(read.csv('FAresult.csv'))
 plot_2d=function(data,main=NULL){ # a qplot wrapper
-  ggplot(NULL,aes(x=data[,1],y=data[,2],color=GMresult))+
-    geom_point(alpha=0.8)+
+  #ggplot(NULL,aes(x=data[,1],y=data[,2],color=GMresult))+
+  ggplot(NULL,aes(x=data[,1],y=data[,2]))+
+    geom_point(alpha=0.5)+
     xlab(colnames(data)[1])+ylab(colnames(data)[2])+
     ggtitle(main)+
     theme_bw()
@@ -117,10 +118,9 @@ pc = pca(X,'svd',nPcs=nrow(X),completeObs=F)
 slplot(pc, scoresLoadings=c(T, F))
 sum(pc@R2[1:2])/sum(pc@R2) # 0.19969
 plot_2d(pc@scores) # same as before
-ggplot(NULL,aes(x=1:50,y=pc@R2[1:50]))+geom_line()+geom_point()+theme_bw()
+ggplot(NULL,aes(x=1:50,y=pc@R2[1:50]))+xlab('number of PC')+
+  ylab('Variance')+geom_line()+geom_point()+theme_bw()
 ggplot(NULL,aes(x=1:length(pc@R2cum),y=pc@R2cum))+geom_line()+geom_hline(yintercept=0.9)+theme_bw()
-plot(pc@R2cum,type='l')
-abline(h=0.9)
 which_cum_p=function(p){
   #find the number of PCs that explain p of the total variance
   which(pc@R2cum>=p)[1]
