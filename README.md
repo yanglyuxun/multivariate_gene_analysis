@@ -1,14 +1,14 @@
 # Multivariate Analysis and Machine Learning on Survival Gene-expression Data
 
-## See "0_Report.pdf" for details.
+## See [0_Report.pdf](./0_Report.pdf) for details.
 
 ## Code files
-* 1\_Imputation.R: R codes for imputation experiments.   
-* 2\_FeatureSelection.ipynb: Python codes for GBDT based feature selection.   
-* 3\_Dimensionality\_reduction.R: R codes for the feature extraction experiments.   
-* 3.1\_FactorAnalysis.ipynb: Python codes for factor analysis. It is too slow in R, so utilize the Python parallel computation.   
-* 3.2\_GaussianMixture.ipynb: Python codes for GMM.   
-* 4\_Survival\_Machine\_Learning.ipynb: Python codes for other machine learning parts.   
+* [1\_Imputation.R](1\_Imputation.R): R codes for imputation experiments.   
+* [2\_FeatureSelection.ipynb](2\_FeatureSelection.ipynb): Python codes for GBDT based feature selection.   
+* [3\_Dimensionality\_reduction.R](3\_Dimensionality\_reduction.R): R codes for the feature extraction experiments.   
+* [3.1\_FactorAnalysis.ipynb](3.1\_FactorAnalysis.ipynb): Python codes for factor analysis. It is too slow in R, so utilize the Python parallel computation.   
+* [3.2\_GaussianMixture.ipynb](3.2\_GaussianMixture.ipynb): Python codes for GMM.   
+* [4\_Survival\_Machine\_Learning.ipynb](4\_Survival\_Machine\_Learning.ipynb): Python codes for other machine learning parts.   
 
 ## Summary
 
